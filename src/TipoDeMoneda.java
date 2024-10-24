@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TipoDeMoneda {
     public static void convertir(String monedaBase, String monedaCambio, TipoDeMoneda consulta, Scanner lectura) {
-        System.out.println("Valor a cambiar:");
+        System.out.println("Cantidad de dinero a Cambiar:");
         double cantidad = lectura.nextDouble();
         lectura.nextLine(); // Limpiar el buffer
 
@@ -18,7 +18,7 @@ public class TipoDeMoneda {
             double resultado = cantidad * tasa;
             System.out.println("Has cambiado " + cantidad + " " + monedaBase + " a " + resultado + " " + monedaCambio);
         } else {
-            System.out.println("No se pudo obtener la tasa de cambio.");
+            System.out.println("No se pudo  hacer el cambio.");
         }
     }
 
@@ -32,9 +32,9 @@ public class TipoDeMoneda {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            // Verificamos si la respuesta fue exitosa (código de estado 200)
+            //  respuesta fue exitosa
             if (response.statusCode() == 200) {
-                // Parseamos la respuesta JSON usando Gson
+                //  respuesta JSON usando Gson
                 Gson gson = new Gson();
                 JsonObject jsonResponse = gson.fromJson(response.body(), JsonObject.class);
 
@@ -43,7 +43,7 @@ public class TipoDeMoneda {
                 if (conversionRates != null && conversionRates.has(monedaCambio)) {
                     return conversionRates.get(monedaCambio).getAsDouble();
                 } else {
-                    System.out.println("No se encontró la tasa de cambio para " + monedaCambio);
+                    System.out.println("No se generar el cambio para " + monedaCambio);
                 }
             } else {
                 System.out.println("Error en la respuesta de la API: " + response.statusCode());
